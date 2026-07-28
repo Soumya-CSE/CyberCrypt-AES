@@ -124,7 +124,6 @@ Base64 Encoded Ciphertext
 
 ## 📸 Application Preview
 
-> Add screenshots here.
 
 
 images/
