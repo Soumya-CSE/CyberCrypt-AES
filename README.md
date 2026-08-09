@@ -1,188 +1,406 @@
-# 🔐 AES Text Encryption & Decryption
+# 🔐 CyberCrypt — AES Text Encryption & Decryption
 
-A Python-based desktop application that securely encrypts and decrypts text using the **Advanced Encryption Standard (AES-256)**. Built with **Tkinter** for the graphical user interface and the **Cryptography** library for secure password-based encryption.
+A simple cybersecurity application for **secure text encryption and decryption using AES-256**.
+The project provides a user-friendly **cybersecurity-themed Tkinter GUI** and demonstrates password-based key derivation, encryption, decryption, random salt generation, and IV handling.
+
+---
+
+## 🛡️ Project Overview
+
+**CyberCrypt** is a desktop-based text encryption and decryption tool developed using Python.
+
+The application allows users to:
+
+* 🔒 Encrypt sensitive text using **AES-256**
+* 🔓 Decrypt encrypted text using the correct password
+* 🔑 Derive encryption keys using **PBKDF2-HMAC-SHA256**
+* 🧂 Generate a unique random **salt**
+* 🎲 Generate a random **Initialization Vector (IV)**
+* 🖥️ Use a cybersecurity-themed graphical interface
+* ⚡ Perform encryption and decryption locally without sending data to a server
+
+This project was created as a practical demonstration of fundamental **cryptography and cybersecurity concepts**.
+
+---
 
 ## ✨ Features
 
-- 🔒 AES-256 encryption
-- 🔑 Password-based key derivation using PBKDF2-HMAC-SHA256
-- 🧂 Random Salt generation for every encryption
-- 🎲 Random Initialization Vector (IV)
-- 📦 AES-CBC encryption mode
-- 📝 Encrypt and decrypt plain text
-- 🖥️ Simple and user-friendly Tkinter GUI
-- 🔐 Secure Base64 encoded output
+### 🔐 AES-256 Encryption
 
----
+The application uses the AES symmetric encryption algorithm with a **256-bit key**.
 
-## 🛠️ Technologies Used
+### 🔑 Password-Based Key Derivation
 
-- Python 3
-- Tkinter
-- Cryptography
-- AES-256
-- PBKDF2-HMAC-SHA256
-- Base64
+The user's password is converted into a cryptographic key using:
 
----
-
-## 📂 Project Structure
-
-```
-AES-Encryption/
-│── AES.py
-│── README.md
-```
-
----
-
-## ⚙️ Installation
-
-### Clone the repository
-
-```bash
-git clone https://github.com/Soumya-CSE/aes-encryption-decryption.git
-```
-
-### Navigate to the project
-
-```bash
-cd aes-encryption-decryption
-```
-
-### Install dependencies
-
-```bash
-pip install cryptography
-```
-
-or
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## ▶️ Run the Application
-
-```bash
-python AES.py
-```
-
----
-
-## 🚀 How to Use
-
-### Encrypt Text
-
-1. Enter a password.
-2. Type the text you want to encrypt.
-3. Click **Encrypt Text**.
-4. Copy the generated:
-   - Encrypted Text
-   - IV
-   - Salt
-
-### Decrypt Text
-
-1. Enter the same password.
-2. Paste the encrypted output in the following format:
-
-```
-Encrypted Text: <encrypted_text>
-IV: <iv>
-Salt: <salt>
-```
-
-3. Click **Decrypt Text** to recover the original message.
-
----
-
-## 🔐 Encryption Workflow
-
-```
-Password
-   │
-   ▼
+```text
 PBKDF2-HMAC-SHA256
-   │
-   ▼
-AES-256 Key
-   │
-   ▼
-Random Salt + Random IV
-   │
-   ▼
-AES-CBC Encryption
-   │
-   ▼
-Base64 Encoded Ciphertext
+```
+
+with:
+
+```text
+Key Size   : 256 bits
+Iterations : 100,000
+Salt       : 16 bytes
+```
+
+### 🧂 Random Salt
+
+A new random 16-byte salt is generated for every encryption operation.
+
+### 🎲 Random IV
+
+A new 16-byte Initialization Vector is generated for every encryption operation.
+
+### 🖥️ Cybersecurity UI
+
+The application uses a dark cybersecurity-inspired interface with:
+
+* Terminal-style typography
+* Green security indicators
+* Encryption/decryption panels
+* Security status messages
+* Password-protected input
+
+### 🔓 Secure Decryption
+
+Encrypted data can only be successfully decrypted when the correct password, IV, and salt are supplied.
+
+---
+
+## 🖥️ Application Screenshots
+
+### 🔐 Encryption Interface
+
+![CyberCrypt Encryption](AES/assets/screenshots/encryption.png)
+
+### 🔓 Decryption Interface
+
+![CyberCrypt Decryption](AES/assets/screenshots/decryption.png)
+
+---
+
+## 🏗️ Project Structure
+
+```text
+aes-text-encryption/
+│
+├── AES/
+│   │
+│   ├── AES.py
+│   │
+│   └── assets/
+│       └── screenshots/
+│           ├── encryption.png
+│           └── decryption.png
+│
+├── README.md
+│
+└── LICENSE
 ```
 
 ---
 
-## 📸 Application Preview
+## ⚙️ Technologies Used
 
-
-
-images/
-<img width="1920" height="1080" alt="encryption" src="https://github.com/user-attachments/assets/fd01e25e-c474-437b-90ae-ab8b6a503925" />
-
-<img width="1920" height="1080" alt="decryption" src="https://github.com/user-attachments/assets/35f1f2ff-bbd7-4feb-9460-8a4cac87e130" />
-
-
-
-
----
-
-## 🔒 Security Features
-
-- AES-256 Encryption
-- PBKDF2 Key Derivation
-- SHA-256 Hashing
-- 100,000 PBKDF2 Iterations
-- Random Salt
-- Random IV
-- PKCS7 Padding
-- Password-Based Encryption
+| Technology   | Purpose                       |
+| ------------ | ----------------------------- |
+| Python       | Application development       |
+| Tkinter      | Graphical User Interface      |
+| Cryptography | Cryptographic operations      |
+| AES-256      | Symmetric encryption          |
+| PBKDF2       | Password-based key derivation |
+| SHA-256      | Cryptographic hash function   |
+| Base64       | Encoding encrypted data       |
+| Git          | Version control               |
+| GitHub       | Source code hosting           |
 
 ---
 
-## 📋 Requirements
+## 🔄 How It Works
 
-- Python 3.8+
-- cryptography
+The encryption process follows these steps:
 
-Install using:
+```text
+                 User Password
+                       │
+                       ▼
+                Generate Salt
+                       │
+                       ▼
+             PBKDF2-HMAC-SHA256
+                       │
+                       ▼
+                 AES-256 Key
+                       │
+                       ▼
+                 Generate IV
+                       │
+                       ▼
+                 Plaintext
+                       │
+                       ▼
+               PKCS7 Padding
+                       │
+                       ▼
+                  AES-CBC
+                       │
+                       ▼
+              Encrypted Data
+                       │
+                       ▼
+              Base64 Encoding
+                       │
+                       ▼
+       Encrypted Text + IV + Salt
+```
+
+---
+
+## 🔓 Decryption Process
+
+```text
+Encrypted Text + IV + Salt
+             │
+             ▼
+       Base64 Decoding
+             │
+             ▼
+        User Password
+             │
+             ▼
+       PBKDF2-HMAC-SHA256
+             │
+             ▼
+          AES-256 Key
+             │
+             ▼
+          AES-CBC
+             │
+             ▼
+       Remove PKCS7 Padding
+             │
+             ▼
+       Original Plaintext
+```
+
+---
+
+## 🚀 Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Soumya-CSE/aes-text-encryption.git
+```
+
+### 2. Navigate to the Project
+
+```bash
+cd aes-text-encryption
+```
+
+### 3. Install the Required Library
 
 ```bash
 pip install cryptography
 ```
 
+Or:
+
+```bash
+python -m pip install cryptography
+```
+
+### 4. Run the Application
+
+```bash
+python AES/AES.py
+```
+
 ---
 
-## 🚀 Future Enhancements
+## 🧪 Example
 
-- File encryption and decryption
-- Dark mode
-- Copy-to-clipboard button
-- Export encrypted text
-- Password strength checker
-- Drag-and-drop support
-- AES-GCM support
+### Input
+
+```text
+Password:
+Cyber@123
+
+Plaintext:
+Hello Cyber Security
+```
+
+### Encryption Output
+
+```text
+Encrypted Text:
+<generated ciphertext>
+
+IV:
+<generated IV>
+
+Salt:
+<generated salt>
+```
+
+The encrypted text, IV, and salt are different for each encryption operation because a new random salt and IV are generated.
+
+### Decryption
+
+Using the same password and generated encryption parameters:
+
+```text
+Decrypted Text:
+
+Hello Cyber Security
+```
+
+---
+
+## 🔐 Cryptographic Components
+
+### AES-256
+
+AES (Advanced Encryption Standard) is a symmetric encryption algorithm.
+
+CyberCrypt uses:
+
+```text
+Algorithm : AES
+Key Size  : 256-bit
+Mode      : CBC
+Block Size : 128-bit
+```
+
+### PBKDF2
+
+PBKDF2 is used to derive a cryptographic key from the user's password.
+
+```text
+PBKDF2-HMAC-SHA256
+Iterations: 100,000
+Key Size: 32 bytes
+Salt: 16 bytes
+```
+
+### PKCS7 Padding
+
+AES operates on fixed-size blocks. PKCS7 padding is used to make the plaintext compatible with the AES block size.
+
+---
+
+## ⚠️ Security Note
+
+This project is primarily intended for **educational and demonstration purposes**.
+
+The current implementation uses:
+
+```text
+AES-256-CBC
+```
+
+CBC mode provides confidentiality but does not inherently provide authentication or integrity protection.
+
+For a production-grade application, an authenticated encryption mode such as:
+
+```text
+AES-GCM
+```
+
+would be preferable because it provides both encryption and integrity/authentication.
+
+---
+
+## 🎯 Learning Objectives
+
+This project demonstrates practical understanding of:
+
+* Symmetric-key cryptography
+* AES encryption
+* AES-256
+* CBC mode
+* Initialization Vectors
+* Cryptographic salts
+* Password-based key derivation
+* PBKDF2
+* SHA-256
+* PKCS7 padding
+* Base64 encoding
+* Python cryptography libraries
+* Tkinter GUI development
+* Git and GitHub version control
+
+---
+
+## 🔮 Future Improvements
+
+Possible future improvements include:
+
+* [ ] Add AES-GCM authenticated encryption
+* [ ] Add file encryption and decryption
+* [ ] Add password strength checking
+* [ ] Add show/hide password option
+* [ ] Add encrypted file export
+* [ ] Add copy-to-clipboard functionality
+* [ ] Add encryption history
+* [ ] Add secure password generation
+* [ ] Add drag-and-drop file encryption
+* [ ] Improve error handling and validation
+
+---
+
+## 📚 Concepts Demonstrated
+
+```text
+Cybersecurity
+     │
+     ├── Cryptography
+     │     ├── AES
+     │     ├── AES-256
+     │     ├── CBC
+     │     └── IV
+     │
+     ├── Password Security
+     │     ├── PBKDF2
+     │     ├── SHA-256
+     │     └── Salt
+     │
+     └── Secure Programming
+           ├── Key Derivation
+           ├── Padding
+           └── Data Encoding
+```
 
 ---
 
 ## 👨‍💻 Author
 
-**Soumya Hazra**
+**Soumya Kanti Hazra**
 
-- GitHub: https://github.com/Soumya-CSE
+B.Tech — Computer Science & Engineering
 
+Interested in:
+
+* 🛡️ Cybersecurity
+* 🔐 Cryptography
+* 🖥️ SOC / Blue Team
+* 🌐 Network Security
+* 🐍 Python
+
+---
+
+## 📄 License
+
+This project is available under the **MIT License**.
+
+See the [LICENSE](LICENSE) file for more information.
 
 ---
 
 ## ⭐ Support
 
-If you found this project useful, consider giving it a **⭐ Star** on GitHub!
+If you found this project useful for learning cybersecurity or cryptography, consider giving the repository a ⭐ on GitHub.
+
