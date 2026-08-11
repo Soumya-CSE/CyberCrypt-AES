@@ -1,406 +1,573 @@
-# 🔐 CyberCrypt — AES Text Encryption & Decryption
+# 🔐 CyberCrypt — AES-256 Encryption & Decryption Tool
 
-A simple cybersecurity application for **secure text encryption and decryption using AES-256**.
-The project provides a user-friendly **cybersecurity-themed Tkinter GUI** and demonstrates password-based key derivation, encryption, decryption, random salt generation, and IV handling.
+CyberCrypt is a lightweight web-based cryptography application built with **Python, Flask, HTML, CSS, and JavaScript**.
 
----
+It provides a simple interface for encrypting and decrypting text using **AES-256-CBC** with **PBKDF2-HMAC-SHA256** key derivation.
 
-## 🛡️ Project Overview
-
-**CyberCrypt** is a desktop-based text encryption and decryption tool developed using Python.
-
-The application allows users to:
-
-* 🔒 Encrypt sensitive text using **AES-256**
-* 🔓 Decrypt encrypted text using the correct password
-* 🔑 Derive encryption keys using **PBKDF2-HMAC-SHA256**
-* 🧂 Generate a unique random **salt**
-* 🎲 Generate a random **Initialization Vector (IV)**
-* 🖥️ Use a cybersecurity-themed graphical interface
-* ⚡ Perform encryption and decryption locally without sending data to a server
-
-This project was created as a practical demonstration of fundamental **cryptography and cybersecurity concepts**.
+> ⚠️ **Disclaimer:** This project is developed for educational and cybersecurity learning purposes.
 
 ---
 
-## ✨ Features
+## 🚀 Features
 
-### 🔐 AES-256 Encryption
+- 🔐 AES-256-CBC encryption
+- 🔓 AES-256-CBC decryption
+- 🔑 PBKDF2-HMAC-SHA256 password-based key derivation
+- 🧂 Random salt generation
+- 🎲 Random IV generation
+- 🔢 100,000 PBKDF2 iterations
+- 📋 Copy encrypted/decrypted output
+- 👁️ Show/Hide password
+- 🔢 Character counter
+- ⚡ Real-time operation status
+- 💻 Cybersecurity-themed user interface
+- 🌐 Flask-based web application
+- 📁 Separate HTML, CSS, and JavaScript files
+- 🖥️ Responsive web interface
 
-The application uses the AES symmetric encryption algorithm with a **256-bit key**.
+---
 
-### 🔑 Password-Based Key Derivation
-
-The user's password is converted into a cryptographic key using:
+## 🛡️ Cryptographic Workflow
 
 ```text
-PBKDF2-HMAC-SHA256
-```
+                 Master Password
+                       │
+                       ▼
+              PBKDF2-HMAC-SHA256
+                 100,000 iterations
+                       │
+                       ▼
+                  AES-256 Key
+                       │
+                       ▼
+                  AES-256-CBC
+                       │
+                       ▼
+                Encrypted Data
+                       │
+                       ▼
+                    Base64
+````
 
-with:
-
-```text
-Key Size   : 256 bits
-Iterations : 100,000
-Salt       : 16 bytes
-```
-
-### 🧂 Random Salt
-
-A new random 16-byte salt is generated for every encryption operation.
-
-### 🎲 Random IV
-
-A new 16-byte Initialization Vector is generated for every encryption operation.
-
-### 🖥️ Cybersecurity UI
-
-The application uses a dark cybersecurity-inspired interface with:
-
-* Terminal-style typography
-* Green security indicators
-* Encryption/decryption panels
-* Security status messages
-* Password-protected input
-
-### 🔓 Secure Decryption
-
-Encrypted data can only be successfully decrypted when the correct password, IV, and salt are supplied.
+A new random **salt** and **IV (Initialization Vector)** are generated for every encryption operation.
 
 ---
 
-## 🖥️ Application Screenshots
+## 🧰 Technologies Used
 
-### 🔐 Encryption Interface
+### Backend
 
-![CyberCrypt Encryption](AES/assets/screenshots/encryption.png)
+* Python
+* Flask
+* Cryptography
 
-### 🔓 Decryption Interface
+### Frontend
 
-![CyberCrypt Decryption](AES/assets/screenshots/decryption.png)
+* HTML5
+* CSS3
+* JavaScript
+
+### Cryptography
+
+* AES-256-CBC
+* PBKDF2-HMAC-SHA256
+* SHA-256
+* PKCS7 Padding
+* Base64 Encoding
+* Random Salt
+* Random IV
 
 ---
 
-## 🏗️ Project Structure
+## 📂 Project Structure
 
 ```text
-aes-text-encryption/
+CyberCrypt-AES/
 │
-├── AES/
-│   │
-│   ├── AES.py
-│   │
-│   └── assets/
-│       └── screenshots/
-│           ├── encryption.png
-│           └── decryption.png
-│
+├── app.py
+├── requirements.txt
 ├── README.md
+├── LICENSE
 │
-└── LICENSE
+├── templates/
+│   └── index.html
+│
+├── static/
+│   ├── style.css
+│   └── script.js
+│
+├── assets/
+│   └── screenshots/
+│       ├── home.png
+│       ├── encryption.png
+│       └── decryption.png
+│
+└── venv/
+```
+
+> `venv/` should be excluded from Git using `.gitignore`.
+
+---
+
+## ⚙️ Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Soumya-CSE/CyberCrypt-AES.git
+```
+
+```bash
+cd CyberCrypt-AES
+```
+
+### 2. Create a Virtual Environment
+
+#### Windows
+
+```bash
+python -m venv venv
+```
+
+Activate the environment:
+
+```bash
+venv\Scripts\activate
+```
+
+#### Linux / macOS
+
+```bash
+python3 -m venv venv
+```
+
+Activate the environment:
+
+```bash
+source venv/bin/activate
+```
+
+### 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
 ```
 
 ---
 
-## ⚙️ Technologies Used
+## ▶️ Run the Application
 
-| Technology   | Purpose                       |
-| ------------ | ----------------------------- |
-| Python       | Application development       |
-| Tkinter      | Graphical User Interface      |
-| Cryptography | Cryptographic operations      |
-| AES-256      | Symmetric encryption          |
-| PBKDF2       | Password-based key derivation |
-| SHA-256      | Cryptographic hash function   |
-| Base64       | Encoding encrypted data       |
-| Git          | Version control               |
-| GitHub       | Source code hosting           |
+Start the Flask server:
+
+```bash
+python app.py
+```
+
+The application will be available at:
+
+```text
+http://127.0.0.1:5000
+```
+
+Open the URL in your browser.
 
 ---
 
-## 🔄 How It Works
+## 🔐 Encryption Process
 
-The encryption process follows these steps:
+To encrypt text:
+
+1. Enter a password.
+2. Enter the plaintext.
+3. Click **ENCRYPT**.
+4. CyberCrypt generates a random salt.
+5. CyberCrypt generates a random IV.
+6. PBKDF2-HMAC-SHA256 derives the AES-256 key.
+7. AES-256-CBC encrypts the plaintext.
+8. The encrypted result is displayed.
+
+### Encryption Flow
 
 ```text
-                 User Password
-                       │
-                       ▼
-                Generate Salt
-                       │
-                       ▼
-             PBKDF2-HMAC-SHA256
-                       │
-                       ▼
-                 AES-256 Key
-                       │
-                       ▼
-                 Generate IV
-                       │
-                       ▼
-                 Plaintext
-                       │
-                       ▼
-               PKCS7 Padding
-                       │
-                       ▼
-                  AES-CBC
-                       │
-                       ▼
-              Encrypted Data
-                       │
-                       ▼
-              Base64 Encoding
-                       │
-                       ▼
-       Encrypted Text + IV + Salt
+Plaintext
+    │
+    ▼
+Password
+    │
+    ▼
+PBKDF2-HMAC-SHA256
+    │
+    ▼
+AES-256 Key
+    │
+    ▼
+AES-256-CBC
+    │
+    ▼
+Ciphertext
+    │
+    ▼
+Base64 Output
 ```
 
 ---
 
 ## 🔓 Decryption Process
 
+To decrypt text:
+
+1. Enter the same password used for encryption.
+2. Enter the encrypted text.
+3. Provide the required IV and salt.
+4. Click **DECRYPT**.
+5. PBKDF2 derives the AES-256 key.
+6. AES-256-CBC decrypts the ciphertext.
+7. The original plaintext is displayed.
+
+### Decryption Flow
+
 ```text
-Encrypted Text + IV + Salt
-             │
-             ▼
-       Base64 Decoding
-             │
-             ▼
-        User Password
-             │
-             ▼
-       PBKDF2-HMAC-SHA256
-             │
-             ▼
-          AES-256 Key
-             │
-             ▼
-          AES-CBC
-             │
-             ▼
-       Remove PKCS7 Padding
-             │
-             ▼
-       Original Plaintext
+Encrypted Data
+      │
+      ├──────── IV
+      │
+      ├──────── Salt
+      │
+      └──────── Password
+                    │
+                    ▼
+           PBKDF2-HMAC-SHA256
+                    │
+                    ▼
+               AES-256 Key
+                    │
+                    ▼
+              AES-256-CBC
+                    │
+                    ▼
+             Original Text
 ```
 
 ---
 
-## 🚀 Installation
+## 🖥️ Screenshots
 
-### 1. Clone the Repository
+### 🏠 Home Interface
 
-```bash
-git clone https://github.com/Soumya-CSE/aes-text-encryption.git
+<img width="1897" height="960" alt="Home" src="https://github.com/user-attachments/assets/d47a9d8c-c6fa-4b58-b95b-9bf80b55a26d" />
+
+
+### 🔐 Encryption Interface
+
+<img width="1901" height="901" alt="Encryption" src="https://github.com/user-attachments/assets/33ebd48c-e87f-4571-8f3c-e14e4492a60a" />
+
+### 🔓 Decryption Interface
+
+<img width="1907" height="902" alt="Decryption" src="https://github.com/user-attachments/assets/791d7690-1d15-45cd-abba-7f6702f7a086" />
+
+
+
+---
+
+## 🔒 Security Details
+
+### AES-256
+
+CyberCrypt uses **AES-256**, a symmetric encryption algorithm using a 256-bit encryption key.
+
+### PBKDF2-HMAC-SHA256
+
+The user's password is not directly used as the AES encryption key.
+
+Instead:
+
+```text
+Password
+   │
+   ▼
+PBKDF2-HMAC-SHA256
+   │
+   ▼
+100,000 Iterations
+   │
+   ▼
+256-bit AES Key
 ```
 
-### 2. Navigate to the Project
+This makes password-based key derivation more computationally expensive.
 
-```bash
-cd aes-text-encryption
+### Random Salt
+
+A random salt is generated for every encryption operation.
+
+The salt is required during decryption to derive the same encryption key.
+
+### Random IV
+
+A new random 16-byte IV is generated for every encryption operation.
+
+The IV is required during decryption.
+
+### PKCS7 Padding
+
+PKCS7 padding is used to ensure that plaintext is compatible with the AES block size.
+
+---
+
+## 📌 API Endpoints
+
+### Encrypt
+
+```text
+POST /encrypt
 ```
 
-### 3. Install the Required Library
+Example request:
 
-```bash
-pip install cryptography
+```json
+{
+    "text": "Hello World",
+    "password": "myPassword"
+}
 ```
 
-Or:
+Example response:
 
-```bash
-python -m pip install cryptography
+```json
+{
+    "success": true,
+    "encrypted_text": "...",
+    "iv": "...",
+    "salt": "..."
+}
 ```
 
-### 4. Run the Application
+### Decrypt
 
-```bash
-python AES/AES.py
+```text
+POST /decrypt
+```
+
+Example request:
+
+```json
+{
+    "encrypted_text": "...",
+    "iv": "...",
+    "salt": "...",
+    "password": "myPassword"
+}
+```
+
+Example response:
+
+```json
+{
+    "success": true,
+    "decrypted_text": "Hello World"
+}
 ```
 
 ---
 
 ## 🧪 Example
 
-### Input
+### Original Text
 
 ```text
-Password:
-Cyber@123
-
-Plaintext:
-Hello Cyber Security
+Hello CyberSecurity!
 ```
 
-### Encryption Output
+### Password
 
 ```text
-Encrypted Text:
-<generated ciphertext>
-
-IV:
-<generated IV>
-
-Salt:
-<generated salt>
+MySecurePassword123
 ```
 
-The encrypted text, IV, and salt are different for each encryption operation because a new random salt and IV are generated.
+### Encryption
+
+```text
+Hello CyberSecurity!
+        │
+        ▼
+PBKDF2-HMAC-SHA256
+        │
+        ▼
+AES-256 Key
+        │
+        ▼
+AES-256-CBC
+        │
+        ▼
+Encrypted Data
+```
 
 ### Decryption
 
-Using the same password and generated encryption parameters:
-
 ```text
-Decrypted Text:
-
-Hello Cyber Security
-```
-
----
-
-## 🔐 Cryptographic Components
-
-### AES-256
-
-AES (Advanced Encryption Standard) is a symmetric encryption algorithm.
-
-CyberCrypt uses:
-
-```text
-Algorithm : AES
-Key Size  : 256-bit
-Mode      : CBC
-Block Size : 128-bit
-```
-
-### PBKDF2
-
-PBKDF2 is used to derive a cryptographic key from the user's password.
-
-```text
+Encrypted Data
+        │
+        ├── Password
+        ├── Salt
+        └── IV
+        │
+        ▼
 PBKDF2-HMAC-SHA256
-Iterations: 100,000
-Key Size: 32 bytes
-Salt: 16 bytes
+        │
+        ▼
+AES-256 Key
+        │
+        ▼
+AES-256-CBC Decryption
+        │
+        ▼
+Hello CyberSecurity!
 ```
-
-### PKCS7 Padding
-
-AES operates on fixed-size blocks. PKCS7 padding is used to make the plaintext compatible with the AES block size.
 
 ---
 
-## ⚠️ Security Note
+## ⚠️ Limitations
 
-This project is primarily intended for **educational and demonstration purposes**.
+This project is designed primarily for **educational and cybersecurity learning purposes**.
 
-The current implementation uses:
+* AES-CBC does not provide built-in authentication.
+* The correct password is required for decryption.
+* The IV and salt must be preserved.
+* Password security depends on password strength.
+* The application is primarily designed for text encryption.
+* It should not be considered a production-grade secure messaging system.
+* No permanent encrypted data storage is implemented.
 
-```text
-AES-256-CBC
-```
-
-CBC mode provides confidentiality but does not inherently provide authentication or integrity protection.
-
-For a production-grade application, an authenticated encryption mode such as:
-
-```text
-AES-GCM
-```
-
-would be preferable because it provides both encryption and integrity/authentication.
+For production applications, an authenticated encryption mode such as **AES-GCM** would generally be preferable.
 
 ---
 
 ## 🎯 Learning Objectives
 
-This project demonstrates practical understanding of:
+This project demonstrates practical concepts including:
 
-* Symmetric-key cryptography
+* Symmetric cryptography
 * AES encryption
 * AES-256
 * CBC mode
-* Initialization Vectors
-* Cryptographic salts
-* Password-based key derivation
 * PBKDF2
+* HMAC
 * SHA-256
+* Password-based key derivation
+* Cryptographic salts
+* Initialization Vectors
 * PKCS7 padding
 * Base64 encoding
-* Python cryptography libraries
-* Tkinter GUI development
-* Git and GitHub version control
+* Flask web development
+* REST-style API communication
+* HTML5
+* CSS3
+* JavaScript
+* Client-server communication
+* Git
+* GitHub
 
 ---
 
-## 🔮 Future Improvements
+## 🔧 Requirements
+
+The project requires **Python 3.x** and the dependencies listed in:
+
+```text
+requirements.txt
+```
+
+Install them using:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🛠️ Development
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Soumya-CSE/CyberCrypt-AES.git
+```
+
+Create a virtual environment:
+
+```bash
+python -m venv venv
+```
+
+Activate it:
+
+```bash
+venv\Scripts\activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the application:
+
+```bash
+python app.py
+```
+
+---
+
+## 📈 Future Improvements
 
 Possible future improvements include:
 
-* [ ] Add AES-GCM authenticated encryption
-* [ ] Add file encryption and decryption
-* [ ] Add password strength checking
-* [ ] Add show/hide password option
-* [ ] Add encrypted file export
-* [ ] Add copy-to-clipboard functionality
-* [ ] Add encryption history
-* [ ] Add secure password generation
-* [ ] Add drag-and-drop file encryption
-* [ ] Improve error handling and validation
-
----
-
-## 📚 Concepts Demonstrated
-
-```text
-Cybersecurity
-     │
-     ├── Cryptography
-     │     ├── AES
-     │     ├── AES-256
-     │     ├── CBC
-     │     └── IV
-     │
-     ├── Password Security
-     │     ├── PBKDF2
-     │     ├── SHA-256
-     │     └── Salt
-     │
-     └── Secure Programming
-           ├── Key Derivation
-           ├── Padding
-           └── Data Encoding
-```
+* 🔐 AES-GCM authenticated encryption
+* 📁 File encryption and decryption
+* 🔑 Password strength meter
+* 📜 Encryption history
+* 📥 Secure encrypted file export
+* 📤 Encrypted file import
+* 🌙 Dark/light theme
+* 🔐 Multi-user authentication
+* 🛡️ Improved error handling
+* 📊 Security activity logging
 
 ---
 
 ## 👨‍💻 Author
 
-**Soumya Kanti Hazra**
+### Soumya Kanti Hazra
 
-B.Tech — Computer Science & Engineering
+Computer Science & Engineering Student
 
-Interested in:
+**GitHub:**
+[https://github.com/Soumya-CSE](https://github.com/Soumya-CSE)
 
-* 🛡️ Cybersecurity
-* 🔐 Cryptography
-* 🖥️ SOC / Blue Team
-* 🌐 Network Security
-* 🐍 Python
+**LinkedIn:**
+[https://www.linkedin.com/in/soumya-kanti-hazra-b20162374](https://www.linkedin.com/in/soumya-kanti-hazra-b20162374)
+
+**TryHackMe:**
+[https://tryhackme.com/p/soumyahazra](https://tryhackme.com/p/soumyahazra)
 
 ---
 
-## 📄 License
+## 📜 License
 
-This project is available under the **MIT License**.
+This project is licensed under the **MIT License**.
 
-See the [LICENSE](LICENSE) file for more information.
+See the `LICENSE` file for more information.
 
 ---
 
 ## ⭐ Support
 
-If you found this project useful for learning cybersecurity or cryptography, consider giving the repository a ⭐ on GitHub.
+If you found this project useful for learning **Cybersecurity, Cryptography, Python, or Flask**, consider giving the repository a ⭐ on GitHub.
 
+---
+
+```
+
+```
+```
