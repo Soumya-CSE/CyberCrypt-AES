@@ -565,9 +565,3 @@ See the `LICENSE` file for more information.
 
 If you found this project useful for learning **Cybersecurity, Cryptography, Python, or Flask**, consider giving the repository a ⭐ on GitHub.
 
----
-
-```
-
-```
-```
