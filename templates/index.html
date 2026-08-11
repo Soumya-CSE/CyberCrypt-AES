@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        CyberCrypt | AES-256 Security Tool
+    </title>
+
+    <!-- CSS -->
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}"
+>
+
+
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+
+    <!-- ==================================================
+         HEADER
+    =================================================== -->
+
+    <header class="topbar">
+
+        <div>
+
+            <h1>
+                <span>⌁</span>
+                CYBERCRYPT
+            </h1>
+
+            <p>
+                AES-256 TEXT ENCRYPTION & DECRYPTION TOOL
+            </p>
+
+        </div>
+
+
+        <div class="system-badge">
+
+            <span class="pulse"></span>
+
+            SYSTEM SECURE
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ==================================================
+         MAIN
+    =================================================== -->
+
+    <main class="container">
+
+
+        <!-- SECURITY INFORMATION -->
+
+        <section class="security-strip">
+
+
+            <div class="security-item">
+
+                <span class="label">
+                    CIPHER
+                </span>
+
+                <strong>
+                    AES-256-CBC
+                </strong>
+
+            </div>
+
+
+            <div class="security-item">
+
+                <span class="label">
+                    KDF
+                </span>
+
+                <strong>
+                    PBKDF2-SHA256
+                </strong>
+
+            </div>
+
+
+            <div class="security-item">
+
+                <span class="label">
+                    ITERATIONS
+                </span>
+
+                <strong>
+                    100,000
+                </strong>
+
+            </div>
+
+
+            <div class="security-item">
+
+                <span class="label">
+                    STATUS
+                </span>
+
+                <strong id="statusText">
+                    READY
+                </strong>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==================================================
+             PASSWORD
+        =================================================== -->
+
+        <section class="password-card">
+
+
+            <div class="section-title">
+
+                <span class="icon">
+                    🔑
+                </span>
+
+                <div>
+
+                    <h2>
+                        MASTER PASSWORD
+                    </h2>
+
+                    <p>
+                        Password is used to derive the AES-256 key.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="password-wrapper">
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter master password..."
+                    autocomplete="off"
+                >
+
+
+                <button
+                    type="button"
+                    id="togglePassword"
+                >
+                    SHOW
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==================================================
+             INPUT / OUTPUT
+        =================================================== -->
+
+        <section class="workspace">
+
+
+            <!-- INPUT -->
+
+            <div class="panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="panel-tag">
+                            01
+                        </span>
+
+                        <span>
+                            INPUT BUFFER
+                        </span>
+
+                    </div>
+
+
+                    <span class="panel-status">
+                        LOCAL INPUT
+                    </span>
+
+                </div>
+
+
+                <textarea
+                    id="inputText"
+                    placeholder="Enter plaintext to encrypt, or paste encrypted package to decrypt..."
+                ></textarea>
+
+
+                <div class="counter">
+
+                    <span id="inputCount">
+                        0
+                    </span>
+
+                    characters
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- OUTPUT -->
+
+            <div class="panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="panel-tag">
+                            02
+                        </span>
+
+                        <span>
+                            SECURE OUTPUT
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        class="copy-btn"
+                        id="copyOutput"
+                    >
+                        COPY
+                    </button>
+
+                </div>
+
+
+                <textarea
+                    id="outputText"
+                    placeholder="Encrypted or decrypted result will appear here..."
+                    readonly
+                ></textarea>
+
+
+                <div class="counter">
+
+                    <span id="outputCount">
+                        0
+                    </span>
+
+                    characters
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==================================================
+             BUTTONS
+        =================================================== -->
+
+        <section class="controls">
+
+
+            <button
+                class="btn btn-encrypt"
+                id="encryptBtn"
+            >
+
+                <span>
+                    ⚡
+                </span>
+
+                ENCRYPT
+
+            </button>
+
+
+            <button
+                class="btn btn-decrypt"
+                id="decryptBtn"
+            >
+
+                <span>
+                    🔓
+                </span>
+
+                DECRYPT
+
+            </button>
+
+
+            <button
+                class="btn btn-clear"
+                id="clearBtn"
+            >
+
+                ✕ CLEAR
+
+            </button>
+
+
+        </section>
+
+
+
+        <!-- ==================================================
+             STATUS
+        =================================================== -->
+
+        <section class="operation-bar">
+
+            <span class="terminal-symbol">
+                ›_
+            </span>
+
+            <span id="operationStatus">
+                STATUS: READY | Waiting for operation...
+            </span>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             SECURITY PIPELINE
+        =================================================== -->
+
+        <section class="info-card">
+
+            <h3>
+                SECURITY PIPELINE
+            </h3>
+
+
+            <div class="pipeline">
+
+                <div>
+                    MASTER PASSWORD
+                </div>
+
+                <span>
+                    →
+                </span>
+
+                <div>
+                    PBKDF2-SHA256
+                </div>
+
+                <span>
+                    →
+                </span>
+
+                <div>
+                    AES-256-CBC
+                </div>
+
+                <span>
+                    →
+                </span>
+
+                <div>
+                    BASE64 OUTPUT
+                </div>
+
+            </div>
+
+
+            <p>
+
+                Each encryption operation generates a new
+                random salt and IV. Keep the encrypted package,
+                IV and salt together for decryption.
+
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        CYBERCRYPT // EDUCATIONAL SECURITY PROJECT
+
+    </footer>
+
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+
+<script
+    src="{{ url_for('static', filename='script.js') }}"
+></script>
+
+
+</body>
+
+</html>
