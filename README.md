@@ -424,23 +424,7 @@ AES-256-CBC Decryption
 Hello CyberSecurity!
 ```
 
----
 
-## ⚠️ Limitations
-
-This project is designed primarily for **educational and cybersecurity learning purposes**.
-
-* AES-CBC does not provide built-in authentication.
-* The correct password is required for decryption.
-* The IV and salt must be preserved.
-* Password security depends on password strength.
-* The application is primarily designed for text encryption.
-* It should not be considered a production-grade secure messaging system.
-* No permanent encrypted data storage is implemented.
-
-For production applications, an authenticated encryption mode such as **AES-GCM** would generally be preferable.
-
----
 
 ## 🎯 Learning Objectives
 
