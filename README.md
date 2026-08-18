@@ -526,6 +526,8 @@ Possible future improvements include:
 
 Computer Science & Engineering Student
 
+Aspiring SOC Analyst | Cybersecurity Enthusiast
+
 **GitHub:**
 [https://github.com/Soumya-CSE](https://github.com/Soumya-CSE)
 
