@@ -4,8 +4,6 @@ CyberCrypt is a lightweight web-based cryptography application built with **Pyth
 
 It provides a simple interface for encrypting and decrypting text using **AES-256-CBC** with **PBKDF2-HMAC-SHA256** key derivation.
 
-> ⚠️ **Disclaimer:** This project is developed for educational and cybersecurity learning purposes.
-
 ---
 
 ## 🚀 Features
@@ -18,7 +16,6 @@ It provides a simple interface for encrypting and decrypting text using **AES-25
 - 🔢 100,000 PBKDF2 iterations
 - 📋 Copy encrypted/decrypted output
 - 👁️ Show/Hide password
-- 🔢 Character counter
 - ⚡ Real-time operation status
 - 💻 Cybersecurity-themed user interface
 - 🌐 Flask-based web application
