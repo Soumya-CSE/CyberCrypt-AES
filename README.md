@@ -17,7 +17,6 @@ It provides a simple interface for encrypting and decrypting text using **AES-25
 - 📋 Copy encrypted/decrypted output
 - 👁️ Show/Hide password
 - ⚡ Real-time operation status
-- 💻 Cybersecurity-themed user interface
 - 🌐 Flask-based web application
 - 📁 Separate HTML, CSS, and JavaScript files
 - 🖥️ Responsive web interface
